@@ -1,0 +1,17 @@
+from chatterbot import ChatBot
+from chatterbot.trainers import ChatterBotCorpusTrainer
+
+# Cria o chatbot
+chatbot = ChatBot('MeuBot')
+
+# Treinamento usando corpus em português e inglês
+trainer = ChatterBotCorpusTrainer(chatbot)
+trainer.train('chatterbot.corpus.portuguese', 'chatterbot.corpus.english')
+
+print("Chatbot pronto! Digite 'sair' para encerrar.")
+while True:
+    mensagem = input("Você: ")
+    if mensagem.lower() == 'sair':
+        break
+    resposta = chatbot.get_response(mensagem)
+    print("Bot:", resposta)
